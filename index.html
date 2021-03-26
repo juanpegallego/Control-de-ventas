@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produccion</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap" rel="stylesheet">
+     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+      body{
+        background-color: rgba(66, 63, 63, 0.527);
+      }
+    </style>
+</head>
+<body>
+  <div class="nav-container">
+    <a href="" id="nav-home" onclick="location.reload()" >Home</a>
+    <a onclick="showSales()">Sales</a>
+    <a href="">Search</a>
+    <a href="">Login</a>
+    
+
+  </div>
+
+  <div class="container-carrito" id="containerCarrito">
+    <h1 class="titulo" >Carrito</h1>
+    <ul id="carrito">      
+    </ul>
+  </div>
+
+  
+          
+  <!------------ Datos personales --------------->
+  <div class="main-container-datos" id="containerDatos">
+    <h1 class="titulo"> Datos del Cliente</h1>
+   
+      <div class="form-group-datos">
+        
+        <label >Apellido y Nombre</label>
+        <input type="text" class="form-control-datos" id="nombreCliente" autofocus autocomplete="off" >
+      </div>
+      <div class="form-group-datos">
+          <label >COBIS</label>
+          <input type="number" class="form-control-datos" id="cobisCliente">
+        </div>
+      <div class="form-group-datos">
+          <label >Fecha de venta</label>
+          <input type="date" class="form-control-datos" id="fechaVenta"> 
+      </div>
+
+        <button id="agregarCliente" class="btn btn-success" >Agregar </button>
+    
+           
+   </div>          
+              
+  <!--------------- Empieza Productos ------------------->
+
+<div class="main-container-productos" id="containerProductos" >          
+           
+
+            <h1 class="titulo" >Productos</h1> 
+
+            <div class="container-botones">
+              <button type="button" class="btn btn-primary" id="addPaquete">Paquetes de productos</button> <br>
+              <button type="button" class="btn btn-primary" id="addTarjeta" >Tarjeta de crédito </button> <br>
+              <button type="button" class="btn btn-primary" id="addPrestamo">Prestamo</button><br>              
+              <button type="button" class="btn btn-primary" id="addSeguro"  >Seguros</button>
+              
+            </div>
+
+            
+<!----------------- Tarjetas de credito ------------------>
+
+            <div class="container-tarjetas" id="containerTarjeta" style="display:none">
+              
+              <div class="form-group tarjetas"  >
+                <div class="form-group">                
+                  <label  >Tarjetas de crédito</label>
+                  <select class="form-control"id="selectTarjetas"  >
+                    <option>Visa </option>
+                    <option>Mastercard </option>
+                    <option>American Express </option>                    
+                  </select>
+              </div>
+
+              <label >Categoria de Tarjeta</label>
+                <select class="form-check form-check-inline" id="selectCategoryTc">
+                  <option class="form-check-input" value="Internacional" type="radio"  > Internacional
+                  <option class="form-check-input" type="radio" value="Gold" >Gold
+                  <option class="form-check-input" value="Platinum" type="radio">Platinum
+                  <option class="form-check-input" type="radio" value="Signature" >Signature
+                </select>
+              
+              <button type="button" class="btn btn-success" onclick="agregarTarjeta()">Confirmar tarjeta</button>
+              <button type="button" class="btn btn-info" id="agregarOtraTC"  >Agregar otra tarjeta</button> 
+              <button id="cierre" class="btn btn-info"  onclick="ocultarProducto(containerTarjeta)" >_</button>
+            </div>
+          </div> 
+
+            <!-- <div class="container-tarjetas" id="container2daTarjeta" style="display: none;">
+              
+              <div class="form-group tarjetas" >
+                
+                
+                  <label >Tarjetas de crédito</label>
+                  <select class="form-control">
+                    <option value="Tarjeta Visa">Visa </option>
+                    <option value="Tarjeta Master">Mastercard </option>
+                    <option value="Tarjeta Amex">American Express </option>
+                    
+                  </select>
+                
+                <label >Categoria de Tarjeta</label>
+                <div class="form-check form-check-inline form-check"  >
+                  <input class="form-check-input" type="radio" >
+                  <label class="form-check-label" >Internacional </label>             
+                  <input class="form-check-input" type="radio" >
+                  <label class="form-check-label" >Gold</label>
+                  <input class="form-check-input" type="radio">
+                  <label class="form-check-label" >Platinum</label>               
+                  <input class="form-check-input" type="radio" >
+                  <label class="form-check-label" >Signature / Black</label>
+                </div>
+              </div>
+              <button type="button" class="btn btn-success"  >Confirmar tarjeta</button>
+              
+              <button id="cierre" >x</button>
+            </div> -->
+
+
+
+<!--------------- Empieza Paquetes de productos -------------------->
+
+            <div class="container-paquetes" id="containerPaquete" style="display:none">
+              <div class="form-group">              
+                 
+                <label  >Paquetes de productos</label>
+                <select class="form-control" id="selectPaquete" autofocus >
+                  <option value="Valora Esencial">Valora Esencial </option>
+                  <option value="Valora Superior">Valora Superior </option>
+                  <option value="Valora Exclusivo">Valora Exclusivo</option> 
+                  <option value="Valora Exclusivo">Selecta Superior</option>  
+                  <option value="Valora Esencial">Valora Esencial PS </option>
+                  <option value="Valora Superior">Valora Superior PS </option>
+                  <option value="Valora Exclusivo">Valora Exclusivo PS</option>          
+                  <option value="Valora Exclusivo">Selecta Superior PS</option>  
+                  <option value="Valora Exclusivo">Valora Exclusivo PS</option>  
+                </select>
+                
+              </div>
+
+              <button type="button" class="btn btn-success" onclick="agregarPaquete()">Confirmar Paquete</button>
+              <button id="cierre" class="btn btn-info" onclick="ocultarProducto(containerPaquete)" >_</button>
+
+              </div>
+
+              
+
+<!----------------- Empieza prestamos ------------------->
+
+              <div class="container-prestamos" id="containerPrestamo" style="display: none;">
+                <div class="form-group">               
+                   
+                  <label >Prestamos</label>
+                  <select class="form-control" id="tipoPrestamo" >
+                    <option>Prestamo nuevo</option>
+                    <option>Renovacion </option>
+                    <option>Reestructuracion / Refinanciacion</option>                   
+                  </select>
+                  <br>
+                  <div class="form-check"> 
+                    <label class="form-check-label" >Importe</label>
+                    <input type="number" id="montoPrestamo">
+                  </div>
+                  <div class="container-botones">
+                    <button type="button" class="btn btn-success" onclick="agregarPrestamo()">Confirmar prestamo</button>
+                    <button id="cierre" class="btn btn-info" onclick="ocultarProducto(containerPrestamo)" >_</button>
+                  </div>
+                  
+                
+                </div>
+                
+             </div>
+
+<!----------------- Empieza Seguros------------------>
+              
+
+              <div class="container-seguros" id="containerSeguro" style="display: none">
+
+                
+
+                  <label>Seguros</label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="boxAtm" value="Opcion Seguros ATM"  >
+                    <label class="form-check-label" >ATM </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="boxAtmPlus" value="Opcion Seguros ATM Plus"  >
+                    <label class="form-check-label" >ATM PLUS</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="boxHogar" value="Metlife Hogar">
+                    <label class="form-check-label" >Hogar</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="boxAp" value="Metlife Accidentes Personales" >
+                    <label class="form-check-label" >Accidentes personales</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="boxMp" value="Metlife Macro Proteccion" > 
+                    <label class="form-check-label" >Macro Proteccion</label>
+                  </div>                  
+                
+                <button type="submit" class="btn btn-success" onclick="agregarSeguro()" >Confirmar Seguro</button>
+                <button id="cierre" class="btn btn-info" onclick="ocultarProducto(containerSeguro)" >_</button>
+
+               
+              </div>                                        
+            
+               
+    </div>
+  </div>
+
+  <!-- SALES container-->
+
+  <div class="sales-container" style="display: none;" id="salesContainer" >
+  
+    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header" id="card-header" >  </div>
+      <div class="card-body">
+        <h5 class="card-title" ></h5>
+        <p class="card-text" id="card-title" ></p>
+        <p class="card-text" id="card-points" ></p>
+      </div>
+
+    </div>
+       
+
+    <script src="start.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
